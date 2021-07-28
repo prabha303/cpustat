@@ -1,12 +1,9 @@
 package osmain
 
 import (
-	"encoding/json"
 	"fmt"
-	"os"
 	"runtime"
 	"runtime/debug"
-	"strconv"
 	"time"
 
 	"inspect/cpustat/metrics"
@@ -32,7 +29,7 @@ type Stats struct {
 	OsSpecific  interface{}
 }
 
-func GetProcessStat() ProcessAndVMStat {
+func GetProcessStat(currentPID string) ProcessAndVMStat {
 	processState := ProcessAndVMStat{}
 	runtime.GOMAXPROCS(1)
 	var stepSec int = 3
@@ -40,20 +37,20 @@ func GetProcessStat() ProcessAndVMStat {
 	step := time.Millisecond * time.Duration(stepSec) * 1000
 	stats := Register(m, step)
 
-	currentPID := strconv.Itoa(os.Getpid())
-
-	for {
+	n := 1
+	for n < 5 {
 		time.Sleep(step)
 		processState = *stats.GetProcessState(currentPID)
-		if processState.ProcessStat.Pid != "" && processState.ProcessStat.PName != "" {
-			b, _ := json.Marshal(processState)
-			fmt.Println("processStateChan---", string(b))
-			break
-		}
+		// if processState.ProcessStat.Pid != "" && processState.ProcessStat.PName != "" {
+		// 	//b, _ := json.Marshal(processState)
+		// 	//fmt.Println("processStateChan---", string(b))
+		// 	//break
+		// }
 		// be aggressive about reclaiming memory
 		// tradeoff with CPU usage
 		runtime.GC()
 		debug.FreeOSMemory()
+		n++
 	}
 	return processState
 }
