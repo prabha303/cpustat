@@ -1,4 +1,4 @@
-// Copyright (c) 2014 Square, Inc
+//
 
 // Package memstat implements metrics collection related to Memory usage
 package memstat

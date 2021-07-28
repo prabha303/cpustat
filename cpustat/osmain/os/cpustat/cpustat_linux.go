@@ -1,4 +1,4 @@
-// Copyright (c) 2014 Square, Inc
+//
 
 // Package cpustat implements metrics collection related to CPU usage
 package cpustat

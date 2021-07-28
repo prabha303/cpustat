@@ -1,4 +1,4 @@
-// Copyright (c) 2014 Square, Inc
+//
 
 // Package diskstat implements metrics collection related to disk IO usage
 package diskstat

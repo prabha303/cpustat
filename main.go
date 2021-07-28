@@ -1,4 +1,4 @@
-// Copyright (c) 2014 Square, Inc
+//
 // +build linux darwin
 
 package main
