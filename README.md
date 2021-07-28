@@ -3,7 +3,7 @@ analysis libraries and utilities with an emphasis on problem detection.
 
 #### Installation
   1. get go
-  2. go get -u -v github.com/square/inspect/...
+  2. go get -u -v inspect/cpustat/...
 
 The above commands should install three binaries in your original $GOPATH/bin directory.
 
@@ -36,13 +36,13 @@ Development setup is a bit tricky given interaction of godep/gopath:
   * git clone git@github.com:CHANGE-ME/inspect.git # change path to your fork
   * cd inspect
 * Setup a reference to upstream to sync changes with upstream easily etc
-  * git remote add upstream github.com/square/inspect.git
+  * git remote add upstream inspect/cpustat.git
 ```
 [s@pain inspect (master)]$ git remote -v
 origin	git@github.com:syamp/inspect.git (fetch)
 origin	git@github.com:syamp/inspect.git (push)
-upstream	github.com/square/inspect.git (fetch)
-upstream	github.com/square/inspect.git (push)
+upstream	inspect/cpustat.git (fetch)
+upstream	inspect/cpustat.git (push)
 ```
 * We use godep for vendoring and dependency management. We rewrite import
   paths. If you are adding a new dependency or updating one, please run
